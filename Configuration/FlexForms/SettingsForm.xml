@@ -1,0 +1,23 @@
+<T3DataStructure>
+    <meta>
+        <langDisable>1</langDisable>
+    </meta>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <el>
+                    <settings.itemsPerPage>
+                        <TCEforms>
+                            <label>LLL:EXT:ns_mobile/Resources/Private/Language/locallang_db.xlf:flexForm_ns_mobiles.fieldName</label>
+                            <config>
+                                <type>input</type>
+                                <size>2</size>
+                                <eval>int</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.itemsPerPage>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

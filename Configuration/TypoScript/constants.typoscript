@@ -1,0 +1,32 @@
+plugin.tx_nsmobile_mobile {
+    view {
+        # cat=plugin.tx_nsmobile_mobile/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ns_mobile/Resources/Private/Templates/
+        # cat=plugin.tx_nsmobile_mobile/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ns_mobile/Resources/Private/Partials/
+        # cat=plugin.tx_nsmobile_mobile/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ns_mobile/Resources/Private/Layouts/
+        # cat=plugin.tx_nsmobile_mobile/file; type=boolean; label=Dark Mode (FE)
+        darkMode = 
+    }        
+}
+
+module.tx_nsmobile_mobile {
+    view {
+        # cat=module.tx_nsmobile_mobile/file; type=string; label=Path to template root (BE)
+        templateRootPath = EXT:ns_mobile/Resources/Private/Backend/Templates/
+        # cat=module.tx_nsmobile_mobile/file; type=string; label=Path to template partials (BE)
+        partialRootPath = EXT:ns_mobile/Resources/Private/Backend/Partials/
+        # cat=module.tx_nsmobile_mobile/file; type=string; label=Path to template layouts (BE)
+        layoutRootPath = EXT:ns_mobile/Resources/Private/Backend/Layouts/
+    }
+    persistence {
+        # cat=module.tx_nsmobile_mobile/file; type=int; label=Storage
+        storagePid = 
+    }
+    
+   
+} 
+
+
+

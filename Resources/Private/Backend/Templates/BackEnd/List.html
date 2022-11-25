@@ -1,0 +1,28 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+    data-namespace-typo3-fluid="true">
+
+<f:layout name="Default" />
+
+
+
+<f:section name="Buttons">
+    <be:moduleLayout.button.linkButton
+        icon="actions-add"
+        title="{f:translate(id: 'LLL:EXT:backend/Resources/Private/Language/locallang_layout.xlf:newRecordGeneral')}"
+        link="{f:uri.action(action: 'getAll')}"
+    />
+</f:section>
+
+<f:section name="Content">
+    <h1><f:translate key="tx_nsmobile_domain_model_mobiles.listingForMobiles" /></h1>
+
+    <f:be.tableList tableName="tx_nsmobile_domain_model_mobiles" fieldList="{}"
+        recordsPerPage="10"
+        enableClickMenu="false"
+        clickTitleMode="info"
+        enableControlPanels="true"
+    />
+</f:section>
+</html>

@@ -1,0 +1,79 @@
+
+plugin.tx_nsmobile_mobile {
+    view {
+        templateRootPaths.0 = EXT:ns_mobile/Resources/Private/Templates/
+        templateRootPaths.1 = {$plugin.tx_nsmobile_mobile.view.templateRootPath}
+        partialRootPaths.0 = EXT:ns_mobile/Resources/Private/Partials/
+        partialRootPaths.1 = {$plugin.tx_nsmobile_mobile.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ns_mobile/Resources/Private/Layouts/
+        layoutRootPaths.1 = {$plugin.tx_nsmobile_mobile.view.layoutRootPath}
+    }
+    
+    features {
+        #skipDefaultArguments = 1
+        # if set to 1, the enable fields are ignored in BE context
+        ignoreAllEnableFieldsInBe = 0
+    }
+    mvc {
+        #callDefaultActionIfActionCantBeResolved = 1
+    }
+}
+
+module.tx_nsmobile_web_nsmobileback1 {
+    
+    view {
+        templateRootPaths.0 = EXT:ns_mobile/Resources/Private/Backend/Templates/
+        templateRootPaths.1 = {$module.tx_nsmobile_web_nsmobileback1.view.templateRootPath}
+        partialRootPaths.0 = EXT:ns_mobile/Resources/Private/Backend/Partials/
+        partialRootPaths.1 = {$module.tx_nsmobile_web_nsmobileback1.view.partialRootPath}
+        layoutRootPaths.0 = EXT:ns_mobile/Resources/Private/Backend/Layouts/
+        layoutRootPaths.1 = {$module.tx_nsmobile_web_nsmobileback1.view.layoutRootPath}
+    }
+    persistence {
+        storagePid = {$module.tx_nsmobile_mobile.persistence.storagePid}
+    }
+}
+
+listAction = PAGE
+listAction {
+	typeNum = 878787878
+	config {
+    	disableAllHeaderCode = 1
+    	additionalHeaders = Content-type:application/json
+    	xhtml_cleaning = 0
+    	admPanel = 0
+        no_cache = 0 
+	}
+
+	10 = USER
+    10 < styles.content.get
+	10 {
+    	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+    	extensionName = NsMobile
+    	pluginName = Mobile
+    	vendorName = NITSAN
+    	controller = Mobiles
+    	switchableControllerActions {
+        	Mobiles {
+            	1 = list
+        	}
+    	}
+        stdWrap.trim = 1
+    	select {
+        	where = list_type = "nsmobile_mobile"
+    	}
+        renderObj < tt_content.list.20.nsmobile_mobile
+	}
+}
+page = PAGE 
+
+page {
+    includeCSS {
+        0 = EXT:ns_mobile/Resources/Public/CSS/mobiles.css
+    }
+
+    includeJS {
+       0 = EXT:ns_mobile/Resources/Public/JavaScript/mobiles.js
+
+    }
+}

@@ -1,0 +1,75 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="content">
+    <h1 id="heading">
+        <f:translate key="tx_nsmobile_domain_model_mobiles.singleViewOfMobile" />
+    </h1>
+    <f:flashMessages />
+    <f:link.action action="list" additionalAttributes="{class:'btn btn-secondary', style:'margin:20px;'}">
+        <f:translate key="tx_nsmobile_domain_model_mobiles.backToList" />
+    </f:link.action><br />
+    <f:render partial="Mobiles/Properties" arguments="{mobiles:mobiles}" />
+    <div class="container" style="margin-bottom: 30px;">
+        <div class=" text-center">
+            <h1>Inquiry</h1>
+        <div class="row ">
+            <div class="col-lg-7 mx-auto">
+                <div class="card mt-2 mx-auto p-4 bg-light">
+                    <div class="card-body bg-light">
+                        <div class="container">
+                            <f:form id="form"  action="mail" controller="Mobiles" arguments="{mobiles : mobiles}">
+                                <div class="controls">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_name">Firstname *</label>
+                                                <input id="fname" type="text" name="fname" class="form-control"required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_lastname">Lastname *</label>
+                                                <input id="lname" type="text" name="lname" class="form-control" required="required" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_email">Email *</label>
+                                                <input id="email" type="email" name="email" class="form-control"required="required">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="form_mobile">Mobile *</label>
+                                                <input id="mobile" type="number" name="mobile" class="form-control" required="required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="form_message">Message *</label>
+                                                <textarea id="message" name="message" class="form-control"rows="4" required="required"></textarea>
+                                            </div>
+                                        </div>
+                                        <div id="status"></div>
+                                        <div class="col-md-12">
+                                            <f:variable name="mobileUid" value="{mobiles.uid}" />
+                                            <f:form.button onclick="sendMail({mobileUid})" onclick="sendMail({mobileUid})" additionalAttributes="{class:'btn btn-success btn-send  pt-2 btn-block'}">Send</f:form.button>
+                                            <!-- <f:link.action onclick="sendMail({mobileUid})" action="mail" arguments="{mobiles : mobiles}" id="sendMailBtn" additionalAttributes="{class:'btn btn-success btn-send  pt-2 btn-block'}">Send</f:link.action> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </f:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>
+
+</html>

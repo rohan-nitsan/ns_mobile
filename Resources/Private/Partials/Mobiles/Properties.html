@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
+<div class="viewForm container g-3">
+	<table>
+		<tr>
+			<td>
+				<f:if condition="{mobiles.image.originalResource.publicUrl}">
+					<f:then>
+						<f:image src="{mobiles.image.originalResource.publicUrl}" id="productImage"/>	
+					</f:then>
+				</f:if>
+				
+			</td>
+		</tr>
+		<tr>
+			<td><h6>{mobiles.brand.name} {mobiles.model.name} {mobiles.name}</h6></td>
+		</tr>
+		<tr>
+			<td><h6 class="price">₹ {mobiles.price}</h6></td>
+		</tr>
+		<tr>
+			<td>
+				<b><f:translate key="tx_nsmobile_domain_model_mobiles.manufacture_date" /> : {mobiles.manufactureDate -> f:format.date()}</b>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<b><f:translate key="tx_nsmobile_domain_model_mobiles.warranty" />: {mobiles.warranty}</b>
+			</td>
+		</tr>
+		<tr>
+			<td> <b><f:translate key="tx_nsmobile_domain_model_mobiles.technology" />: {mobiles.technology.name}</b> </td>
+		</tr>
+		<tr>
+			<td>
+				<f:format.html>
+					{mobiles.description}
+				</f:format.html>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</html>

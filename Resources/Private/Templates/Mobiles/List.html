@@ -1,0 +1,151 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+xmlns:ns="http://typo3.org/ns/NITSAN/NsMobile/ViewHelpers"
+data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="content">
+
+  <div id="status"> </div>
+  <div id="mobileData">   
+    <h1 id="heading">
+      <f:translate key="tx_nsmobile_domain_model_mobiles.listingForMobiles" />
+    </h1>
+    <f:flashMessages />
+    <f:link.action action="new" additionalAttributes="{class:'btn btn-primary', id:'addNewBtn'}">
+      <f:translate key="tx_nsmobile_domain_model_mobiles.addNewMobile" />
+    </f:link.action>
+    <f:render partial="Mobiles/FilterForm"
+      arguments="{brands:brands, model:model, technology: technology, selectedTechnology:selectedTechnology,selectedBrand:selectedBrand, selectedModel:selectedModel}" />
+    <table class="tx_nsmobile table">
+      <thead class="table-dark">
+        <tr>
+          <th>
+            <f:translate key="tx_nsmobile_domain_model_mobiles.image" />
+          </th>
+          <th>
+            <f:translate key="tx_nsmobile_domain_model_mobiles.name" />
+          </th>
+          <th>
+            <f:translate key="tx_nsmobile_domain_model_mobiles.technology" />
+          </th>
+          <th>
+            <f:translate key="tx_nsmobile_domain_model_mobiles.price" />
+          </th>
+          <th colspan="3">
+            <f:translate key="tx_nsmobile_domain_model_mobiles.actions" />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <f:if condition="(<f:count>{pagination.paginator.paginatedItems}</f:count>)==0">
+          <f:then>
+            <tr>
+              <td colspan="5"
+                style="text-align: center; color: red; font-weight: bold; font-size: 70px; padding : 150px;">
+                <f:translate key="tx_nsmobile_domain_model_mobiles.noRecordsFound" />
+              </td>
+            </tr>
+          </f:then>
+          <f:else>
+            <f:for each="{pagination.paginator.paginatedItems}" as="mobiles" iteration="iterator">
+              <tr>
+                <td>
+                  <f:if condition="{mobiles.image.originalResource}">
+                    <f:then>
+                      <f:image image="{mobiles.image.originalResource}" />
+                    </f:then>
+                  </f:if>
+                </td>
+                <td>
+                  <h6>{mobiles.name}</h6>
+                </td>
+                <td style="text-align:center;">
+                  <h6>{mobiles.technology.name}</h6>
+                </td>
+                <td style="text-align:center;">
+                  <h6 class="price">
+                    <f:translate key="tx_nsmobile_domain_model_mobiles.priceSymbol" /> {mobiles.price} 
+                  </h6>
+                  <h6 class="price">
+                    <f:translate key="tx_nsmobile_domain_model_mobiles.priceSymbol" /> 
+                  <ns:priceDiscount price='{mobiles.price}' discount='10'/>
+                  </h6>
+                 
+                </td>
+                <td style="text-align:center;">
+                  <f:link.action action="show" arguments="{mobiles : mobiles}"><button id="actionButton"
+                      class="btn btn-info">
+                      <f:translate key="tx_nsmobile_domain_model_mobiles.view" />
+                    </button>
+                  </f:link.action>
+                  <br>
+                  <f:link.action action="edit" arguments="{mobiles : mobiles}"><button id="actionButton"
+                      class="btn btn-warning">
+                      <f:translate key="tx_nsmobile_domain_model_mobiles.edit" />
+                    </button>
+                  </f:link.action>
+                  <br>
+                  <f:link.action action="delete" arguments="{mobiles : mobiles}" id="delete">
+                    <button id="actionButton" onclick='return confirm("Are you sure you want to delete this item?")' class="btn btn-danger">
+                      <f:translate key="tx_nsmobile_domain_model_mobiles.delete" />
+                    </button>
+                  </f:link.action>
+              </tr>
+            </f:for>
+          </f:else>
+        </f:if>
+      </tbody>
+    </table>
+    <f:if condition="<f:count>{pages}</f:count> > 1">
+      <f:then>
+        <ul class="pagination">
+          <li class="page-item page-item active">
+            <f:form.button type="button" id="page1" onclick="pagination(1)" value="1"
+              additionalAttributes="{class:'page-link', action:'{f:uri.action(action:list, pageType: 878787878,arguments:{currentPage: 1})}'}">
+              << </f:form.button>
+          </li>
+          <li class="page-item page-item active">
+            <f:variable name="previousPage" value="{pagination.currentPage}-1" />
+            <f:form.button type="button" id="page{previousPage}" onclick="pagination({previousPage})"
+              value="{previousPage}"
+              additionalAttributes="{class:'page-link', action:'{f:uri.action(action:list, pageType: 878787878,arguments:{currentPage: page})}'}">
+              < </f:form.button>
+          </li>
+          <f:for each="{pages}" as="page">
+            <f:if condition="{page}=={pagination.currentPage}">
+              <f:then>
+                <li class="page-item page-item active">
+                  <f:form.button type="button" id="page{page}" onclick="pagination({page})" value="{page}"
+                    additionalAttributes="{class:'page-link', action:'{f:uri.action(action:list, pageType: 878787878,arguments:{currentPage: page})}'}">
+                    {page}
+                  </f:form.button>
+                </li>
+              </f:then>
+              <f:else>
+                <li class="page-item">
+                  <f:form.button type="button" id="page{page}" onclick="pagination({page})" value="{page}"
+                    additionalAttributes="{class:'page-link',action:'{f:uri.action(action:list, pageType: 878787878,arguments:{currentPage: page})}'}">
+                    {page}
+                  </f:form.button>
+              </f:else>
+            </f:if>
+          </f:for>
+          <li class="page-item page-item active">
+            <f:variable name="nextPage" value="{pagination.currentPage}+1" />
+            <f:form.button type="button" id="page{nextPage}" onclick="pagination({nextPage})" value="{nextPage}"
+              additionalAttributes="{class:'page-link', action:'{f:uri.action(action:list, pageType: 878787878,arguments:{currentPage: page})}'}">
+              >
+            </f:form.button>
+          </li>
+          <li class="page-item page-item active">
+            <f:variable name="lastPage" value="<f:count>{pages}</f:count>" />
+            <f:form.button type="button" id="page{lastPage}" onclick="pagination({lastPage})" value="{lastPage}"
+              additionalAttributes="{class:'page-link', action:'{f:uri.action(action:list, pageType: 878787878, arguments:{currentPage: lastPage,})}'}">
+              >>
+            </f:form.button>
+          </li>
+        </ul>
+      </f:then>
+    </f:if>
+  </div>
+</f:section>
+</html>

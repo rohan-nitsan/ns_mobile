@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+body {
+    font-family: 'Comfortaa', cursive;;
+}
+img {
+    height: 200px;
+    width: 150px;
+}
+h6 {
+    font-weight: bold;
+}
+button {
+    margin: 2px;
+}
+
+#filterButton{
+    margin-top: 23px !important;
+}
+
+.viewForm{
+    border: 3px solid gray;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 30px;
+    margin-left: 400px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.viewForm li {
+    text-align: left;
+}
+
+.editForm{
+    border: 3px solid gray;
+    padding: 10px;
+    /* display: inline-block; */
+    border-radius: 30px;
+    margin-left: 400px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.editForm label {
+    float: left;
+}
+
+
+.formLabel{
+    font-weight: bold;
+}
+
+.price {
+    border: 2px solid gray;
+    margin: 2px;
+    padding: 5px;
+    border-radius: 10px;
+    display: inline-block;
+}
+table thead tr th {
+    text-align: center;
+}
+#addNewBtn{
+    float: right;
+    margin-right: 50px;
+}
+
+#heading {
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+}
+
+#actionButton{
+    width: 100px;
+}
+
+.pagination{
+    position: fixed  ;
+    bottom: 0;
+    width: 100%;
+    justify-content: center;
+}

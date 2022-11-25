@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="EXT:ns_mobile/Resources/Private/Language/locallang_csh_tx_nsmobile_domain_model_mobiles.xlf" date="2022-11-22T06:02:34Z" product-name="ns_mobile">
+		<header/>
+		<body>
+			<trans-unit id="name.description" resname="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="price.description" resname="price.description">
+				<source>price</source>
+			</trans-unit>
+			<trans-unit id="description.description" resname="description.description">
+				<source>description</source>
+			</trans-unit>
+			<trans-unit id="manufacture_date.description" resname="manufacture_date.description">
+				<source>manufactureDate</source>
+			</trans-unit>
+			<trans-unit id="warranty.description" resname="warranty.description">
+				<source>warranty</source>
+			</trans-unit>
+			<trans-unit id="image.description" resname="image.description">
+				<source>image</source>
+			</trans-unit>
+			<trans-unit id="ram.description" resname="ram.description">
+				<source>ram</source>
+			</trans-unit>
+			<trans-unit id="model.description" resname="model.description">
+				<source>model</source>
+			</trans-unit>
+			<trans-unit id="brand.description" resname="brand.description">
+				<source>brand</source>
+			</trans-unit>
+			<trans-unit id="technology.description" resname="technology.description">
+				<source>technology</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

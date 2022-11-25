@@ -1,0 +1,121 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div id="status"></div>
+<div class="editForm container row g-3">
+	<div class="col-md-6">
+		<br>
+		<label for="name" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.name" />
+		</label>
+
+		<f:form.textfield property="name" id="name"
+			additionalAttributes="{class:'form-control',required: 'required'}" />
+	</div>
+
+	<div class="col-md-6">
+		<br>
+		<label for="price" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.price" />
+		</label>
+
+		<f:form.textfield type="number" property="price" id="price"
+			additionalAttributes="{class:'form-control',required: 'required'}" />
+
+	</div>
+	<div class="col-md-12">
+		<br>
+		<label for="description" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.description" />
+		</label>
+
+		<f:form.textarea property="description" id="description" cols="40" rows="15"
+			additionalAttributes="{class:'form-control'}" />
+
+	</div>
+	<div class="col-md-6">
+		<br>
+		<label for="manufactureDate" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.manufacture_date" />
+		</label>
+
+		<f:form.textfield property="manufactureDate" id="manufactureDate"
+			value="{mobiles.manufactureDate->f:format.date()}"
+			additionalAttributes="{class:'form-control',required: 'required'}" />
+	</div>
+
+	<div class="col-md-6">
+		<br>
+		<label for="warranty" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.warranty" />
+		</label>
+
+		<f:form.textfield property="warranty" id="warranty" additionalAttributes="{class:'form-control'}" />
+	</div>
+	<f:comment>
+		<div class="col-md-12">
+			<br>
+			<label for="image" class="formLabel">
+				<f:translate key="tx_nsmobile_domain_model_mobiles.image" />
+			</label>
+			<f:if condition="{mobiles.image.originalResource.publicUrl}">
+				<f:then>
+					<f:image src="{mobiles.image.originalResource.publicUrl}" />
+				</f:then>
+			</f:if>
+			<f:form.upload name="file" />
+		</div>
+	</f:comment>
+
+	<div class="col-md-6">
+		<br>
+		<label for="ram" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.ram" />
+		</label>
+
+		<f:form.textfield property="ram" id="ram" additionalAttributes="{class:'form-control'}" />
+	</div>
+	<div class="col-md-6">
+		<br>
+		<label for="technology" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.technology" />
+		</label>
+		<f:form.select name="technology" id="technology" property="technology"
+			additionalAttributes="{class:'form-control'}">
+			<f:for each="{technology}" as="technology">
+				<f:form.select.option value="{technology.uid}"
+					selected="{f:if(condition: '{technology.name}=={mobiles.technology.name}', then: 'selected')}">
+					{technology.name}</f:form.select.option>
+			</f:for>
+		</f:form.select>
+	</div>
+	<div class="col-md-6">
+		<br>
+		<label for="brand" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.brand" />
+		</label>
+
+		<f:form.select name="brands" id="brand" property="brand"
+			additionalAttributes="{class:'form-control',onchange:'findModelByBrand()'}">
+			<f:for each="{brands}" as="brand">
+				<f:form.select.option value="{brand.uid}"
+					selected="{f:if(condition: '{brand.name}=={mobiles.brand.name}', then: 'selected')}">{brand.name}
+				</f:form.select.option>
+			</f:for>
+		</f:form.select>
+	</div>
+	<div class="col-md-6">
+		<br>
+		<label for="model" class="formLabel">
+			<f:translate key="tx_nsmobile_domain_model_mobiles.model" />
+		</label>
+
+		<f:form.select name="models" property="model" id="model" additionalAttributes="{class:'form-control'}">
+			<f:for each="{model}" as="model">
+				<f:form.select.option value="{model.uid}"
+					selected="{f:if(condition: '{model.name}=={mobiles.model.name}', then: 'selected')}"> {model.name}
+				</f:form.select.option>
+			</f:for>
+		</f:form.select>
+	</div>
+</div>
+
+</html>

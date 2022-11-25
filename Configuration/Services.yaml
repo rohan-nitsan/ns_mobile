@@ -1,0 +1,7 @@
+services:
+
+   NITSAN\NsMobile\Command\ClearRecords:
+    tags:
+      - name: console.command
+        command: 'clearDeletedRecords'
+        description: 'A command delete the all deleted records.'

@@ -1,0 +1,39 @@
+<f:form action="list" enctype="multipart/form-data" id="filterForm" pageType="878787878" style="margin: 10px;">
+    <div class="form container row g-3">
+        <div class="col-md-3">
+            <strong><f:translate key="tx_nsmobile_domain_model_mobiles.selectBrand" /></strong> 
+            <f:form.select name="brands" id="brand" property="brand" additionalAttributes="{class:'form-control',onchange:'getModelByBrand()'}"  >
+                <f:form.select.option><f:translate key="tx_nsmobile_domain_model_mobiles.all" /></f:form.select.option>
+                <f:for each="{brands}" as="brand">
+                    <f:form.select.option value="{brand.uid}"
+                        selected="{f:if(condition: '{brand.uid}=={selectedBrand}', then: 'selected')}" id="brand">
+                        {brand.name}</f:form.select.option>
+                </f:for>
+            </f:form.select>
+        </div>
+        <div class="col-md-3">
+            <strong><f:translate key="tx_nsmobile_domain_model_mobiles.selectModel" /></strong>
+            <f:form.select name="models" property="model" id="model" additionalAttributes="{class:'form-control',onchange:'filter()'}">
+                <f:form.select.option><f:translate key="tx_nsmobile_domain_model_mobiles.all" /></f:form.select.option>
+                <f:for each="{model}" as="model">
+                    <f:form.select.option value="{model.uid}"
+                        selected="{f:if(condition: '{model.uid}=={selectedModel}', then: 'selected')}" id="model">
+                        {model.name}
+                    </f:form.select.option>
+                </f:for>
+            </f:form.select>
+        </div>
+        <div class="col-md-3">
+            <strong><f:translate key="tx_nsmobile_domain_model_mobiles.selectTechnology" /></strong>
+            <f:form.select name="technology" property="technology" id="technology" additionalAttributes="{class:'form-control',onchange:'filter()'}">
+                <f:form.select.option><f:translate key="tx_nsmobile_domain_model_mobiles.all" /></f:form.select.option>
+                <f:for each="{technology}" as="technology">
+                    <f:form.select.option value="{technology.uid}"
+                        selected="{f:if(condition: '{technology.uid}=={selectedTechnology}', then: 'selected')}" id="model">
+                        {technology.name}
+                    </f:form.select.option>
+                </f:for>
+            </f:form.select>
+        </div>  
+    </div>
+</f:form>

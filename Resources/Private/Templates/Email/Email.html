@@ -1,0 +1,67 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Email" />
+
+<f:section name="content">
+    <f:debug>{_all}</f:debug>
+    <table border="1px" cellpadding="5">
+        <tr>
+            <th colspan="2"><h1>Inquiry Details</h1></th>
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <td>{senderName}</td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td>{senderEmail}</td>
+        </tr>
+        <tr>
+            <th>Mobile No.:</th>
+            <td>{senderMobileNo}</td>
+        </tr>
+        <tr>
+            <th>Message:</th>
+            <td>{message}</td>
+        </tr>
+        <tr>
+            <th colspan="2"><h1>Product Details</h1></th>
+        </tr>
+        <tr>
+            <th>Name: </th>
+            <td>{mobileData.0.name}</td>
+        </tr>
+        <tr>
+            <th>Price: </th>
+            <td>{mobileData.0.price}</td>
+        </tr>
+        <tr>
+            <th>Description: </th>
+            <td><f:format.html>{mobileData.0.description}</f:format.html></td>
+        </tr>
+        <tr>
+            <th>MFD: </th>
+            <td>{mobileData.0.manufactureDate -> f:format.date()}</td>
+        </tr>
+        <tr>
+            <th>Warranty: </th>
+            <td>{mobileData.0.warranty}</td>
+        </tr>
+        <tr>
+            <th>RAM: </th>
+            <td>{mobileData.0.ram}</td>
+        </tr>
+        <tr>
+            <th>Brand: </th>
+            <td>{mobileData.0.brand.name}</td>
+        </tr>
+        <tr>
+            <th>Model: </th>
+            <td>{mobileData.0.model.name}</td>
+        </tr>
+        <tr>
+            <th>Technology: </th>
+            <td>{mobileData.0.technology.name}</td>
+        </tr>
+    </table>
+</f:section>
+</html>
